@@ -5,64 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumea | Luz que nutre tu piel</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Cormorant Garamond', serif;
-      background-color: #4e3b2f;
-      color: #f3e9dc;
+      background-color: #ffffff;
+      color: #3b2f2a;
     }
 
-    /* SPLASH */
+    /* SPLASH SCREEN */
     .splash {
       position: fixed;
-      inset: 0;
-      background: linear-gradient(180deg, #6f5848, #4e3b2f);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      z-index: 10;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-    .splash.hidden { opacity: 0; visibility: hidden; }
-    .splash h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-style: italic;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 18px;
-    }
-    .splash p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-style: italic;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
     }
 
-    /* MENU */
-    .menu { display: none; min-height: 100vh; padding: 50px 20px; text-align: center; }
-.menu.active { display: block; }
-    .menu h2 {
+    .logo {
+      width: 120px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .menu, .section {
+      display: none;
+      min-height: 100vh;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .menu.active, .section.active {
+      display: block;
+    }
+
+    h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-style: italic;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #5a463b;
     }
 
     .menu-buttons {
       display: grid;
-      gap: 22px;
+      gap: 20px;
       max-width: 360px;
       margin: auto;
     }
+
     .btn {
       padding: 16px 30px;
       border-radius: 35px;
@@ -70,44 +76,32 @@
       border: none;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #3b2f2a;
       cursor: pointer;
     }
-
-    /* SECTIONS */
-    .section { display: none; padding: 70px 20px; max-width: 1000px; margin: auto; min-height:100vh; }
-    .section.active { display: block; }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-style: italic;
-      margin-bottom: 25px;
-    }
-
-    p { font-size: 1.15rem; line-height: 1.9; color: #e6d8c6; }
 
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 30px;
     }
+
     .card {
-      background-color: #6f5848;
+      background-color: #f3e9dc;
       border-radius: 22px;
-      padding: 30px;
-      text-align: center;
+      padding: 25px;
       cursor: pointer;
     }
+
     .card img {
       width: 100%;
-      max-width: 180px;
-      border-radius: 16px;
-      margin-bottom: 18px;
+      max-width: 220px;
+      border-radius: 18px;
+      margin-bottom: 15px;
     }
+
     .price {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
@@ -119,159 +113,154 @@
       border: none;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
-      letter-spacing: 1px;
       cursor: pointer;
-      margin-bottom: 30px;
-      color: #d8c7b5;
+      margin-bottom: 20px;
+      color: #8c6f5c;
     }
 
-    .dots { position: fixed; top: 18px; right: 18px; font-size: 1.6rem; cursor: pointer; }
-    .dots-menu {
-      display: none;
-      position: fixed;
-      top: 60px;
-      right: 18px;
-      background: #6f5848;
-      border-radius: 18px;
-      padding: 15px;
-    }
-    .dots-menu button {
-      display: block;
-      background: none;
-      border: none;
-      padding: 12px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      cursor: pointer;
-      color: #f3e9dc;
-    }
-
-    ol { font-style: italic; }
-    ol li { margin-bottom: 18px; font-weight: 600; }
-    ol li:first-child { font-size: 1.25rem; }
-
-    @media (max-width:600px) {
-      .splash h1 { font-size: 3rem; }
-      .splash p { font-size: 1.3rem; }
+    a {
+      color: #3b2f2a;
+      text-decoration: none;
+      font-weight: 600;
     }
   </style>
 </head>
+
 <body>
 
+<!-- SPLASH -->
 <div class="splash" id="splash">
-  <h1>Lumea</h1>
-  <p>Luz que nutre tu piel</p>
+  <img src="logo.jpeg" class="logo">
 </div>
 
+<!-- MENU -->
 <div class="menu active" id="menu">
+  <img src="logo.jpeg" class="logo">
   <h2><em>Bienvenida</em></h2>
   <div class="menu-buttons">
     <button class="btn" onclick="openSection('inicio')">Inicio</button>
     <button class="btn" onclick="openSection('catalogo')">Catálogo</button>
     <button class="btn" onclick="openSection('uso')">Cómo usar</button>
-    <button class="btn" onclick="openSection('contacto')">Contacto</button>
+    <button class="btn" onclick="openSection('contacto')">Redes sociales</button>
   </div>
 </div>
 
-<div class="dots" onclick="toggleDots()">⋮</div>
-<div class="dots-menu" id="dotsMenu">
-  <button onclick="goMenu()">Inicio</button>
-  <button onclick="openSection('catalogo')">Catálogo</button>
-  <button onclick="openSection('uso')">Cómo usar</button>
-  <button onclick="openSection('contacto')">Contacto</button>
-</div>
-
+<!-- INICIO -->
 <div class="section" id="inicio">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="goMenu()">← Volver</button>
   <h2><em>Velas humectantes</em></h2>
-  <p><strong><em>Lumea transforma la luz en bienestar.</em></strong> Velas humectantes artesanales que nutren profundamente la piel, aportan hidratación duradera y envuelven los sentidos en aromas cálidos, creando rituales conscientes de autocuidado y relajación.</p>
+  <p><strong><em>Lumea transforma la luz en bienestar.</em></strong> Velas artesanales que nutren la piel y elevan tus momentos de autocuidado.</p>
 </div>
 
+<!-- CATÁLOGO -->
 <div class="section" id="catalogo">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="goMenu()">← Volver</button>
   <h2><em>Catálogo</em></h2>
+
   <div class="products">
-    <div class="card" onclick="openProduct('coco')">
-      <img src="coco_vainilla.jpg" alt="Coco y Vainilla">
-      <h3>Coco & Vainilla</h3>
+    <div class="card" onclick="openSection('pina')">
+      <img src="pina-coco.jpeg" alt="Vela Piña Coco">
+      <h3>Piña Coco</h3>
     </div>
-    <div class="card" onclick="openProduct('melocoton')">
-      <img src="melocoton_vainilla.jpg" alt="Melocotón y Vainilla">
-      <h3>Melocotón & Vainilla</h3>
+
+    <div class="card" onclick="openSection('durazno')">
+      <img src="durazno.jpeg" alt="Vela Durazno">
+      <h3>Durazno</h3>
     </div>
-    <div class="card" onclick="openProduct('lavanda')">
-      <img src="lavanda_vainilla.jpg" alt="Lavanda y Vainilla">
-      <h3>Lavanda & Vainilla</h3>
+
+    <div class="card" onclick="openSection('lavanda')">
+      <img src="lavanda.jpeg" alt="Vela Lavanda">
+      <h3>Lavanda</h3>
     </div>
   </div>
 </div>
 
-<div class="section" id="coco">
+<!-- PRODUCTOS -->
+<div class="section" id="pina">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="openSection('catalogo')">← Catálogo</button>
-  <h2><em>Coco & Vainilla</em></h2>
-  <p class="price">$10</p>
-  <p>Una combinación profundamente nutritiva que hidrata, suaviza y mejora la elasticidad de la piel. El coco aporta humectación intensa mientras la vainilla envuelve los sentidos en una sensación de calma, bienestar y confort emocional.</p>
-  <button class="btn" onclick="comprar('Coco y Vainilla')">Comprar</button>
+  <h2>Piña Coco</h2>
+  <img src="pina-coco.jpeg">
+  <p class="price">75 g — $7<br>125 g — $12<br>180 g — $15</p>
+  <button class="btn" onclick="comprar('Piña Coco')">Comprar</button>
 </div>
 
-<div class="section" id="melocoton">
+<div class="section" id="durazno">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="openSection('catalogo')">← Catálogo</button>
-  <h2><em>Melocotón & Vainilla</em></h2>
-  <p class="price">$10</p>
-  <p>Fresca, luminosa y revitalizante. Esta vela ayuda a hidratar la piel mientras aporta suavidad, energía positiva y una sensación de renovación ideal para rituales diurnos de autocuidado.</p>
-  <button class="btn" onclick="comprar('Melocotón y Vainilla')">Comprar</button>
+  <h2>Durazno</h2>
+  <img src="durazno.jpeg">
+  <p class="price">75 g — $7<br>125 g — $12<br>180 g — $15</p>
+  <button class="btn" onclick="comprar('Durazno')">Comprar</button>
 </div>
 
 <div class="section" id="lavanda">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="openSection('catalogo')">← Catálogo</button>
-  <h2><em>Lavanda & Vainilla</em></h2>
-  <p class="price">$10</p>
-  <p>Diseñada para relajar cuerpo y mente, esta vela favorece el descanso profundo, hidrata la piel y transforma la rutina nocturna en un ritual de paz y desconexión.</p>
-  <button class="btn" onclick="comprar('Lavanda y Vainilla')">Comprar</button>
+  <h2>Lavanda</h2>
+  <img src="lavanda.jpeg">
+  <p class="price">75 g — $7<br>125 g — $12<br>180 g — $15</p>
+  <button class="btn" onclick="comprar('Lavanda')">Comprar</button>
 </div>
 
+<!-- USO -->
 <div class="section" id="uso">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="goMenu()">← Volver</button>
-  <h2><strong><em>Cómo usar</em></strong></h2>
+  <h2><em>Cómo usar</em></h2>
   <ol>
-    <li>Enciende la vela y permite que la cera se derrita lentamente hasta liberar sus aceites nutritivos.</li>
-    <li>Apaga la llama y espera unos segundos hasta que la temperatura sea segura.</li>
-    <li>Aplica la cera tibia sobre la piel y siente su textura sedosa.</li>
-    <li>Masajea suavemente y disfruta el aroma envolvente.</li>
-    <li>Convierte este momento en un ritual consciente de autocuidado.</li>
+    <li>Enciende la vela hasta derretir la cera.</li>
+    <li>Apaga la llama y espera unos segundos.</li>
+    <li>Aplica la cera tibia sobre la piel.</li>
+    <li>Masajea y disfruta.</li>
   </ol>
 </div>
 
+<!-- REDES -->
 <div class="section" id="contacto">
+  <img src="logo.jpeg" class="logo">
   <button class="back" onclick="goMenu()">← Volver</button>
-  <h2><em>Contacto</em></h2>
-  <p>Realiza tu pedido o escríbenos para más información.</p>
-  <button class="btn" onclick="window.open('https://wa.me/593962017059','_blank')">WhatsApp</button><br><br>
-  <button class="btn" onclick="window.open('https://www.instagram.com/p/DSTf91eAJ0D/?igsh=Y3N0Y3YwMjd2dHBz','_blank')">Instagram</button><br><br>
-  </div>
+  <h2><em>Redes sociales</em></h2>
+
+  <p>
+    📸 <a href="https://www.instagram.com/lumea.velas_hidratantea?igsh=bnlqMWdkeHd1ZTYw" target="_blank">Instagram</a><br><br>
+    💬 <a href="https://wa.me/593986284936" target="_blank">WhatsApp +593 98 628 4936</a><br><br>
+    🎵 <a href="https://www.tiktok.com/@lumea.ec?_r=1&_t=ZS-93gJpcRPK5a" target="_blank">TikTok</a><br><br>
+    📘 <a href="https://www.facebook.com/share/1BsHoYRmgG/" target="_blank">Facebook</a>
+  </p>
+</div>
 
 <script>
-  setTimeout(()=>document.getElementById('splash').classList.add('hidden'),1500);
+// Splash de inicio (1 segundo)
+window.addEventListener("load", function() {
+  setTimeout(() => {
+    const splash = document.getElementById("splash");
+    splash.style.opacity = "0";
 
-  function openSection(id){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    document.getElementById('menu').classList.remove('active');
-    document.getElementById(id).classList.add('active');
-  }
-  function goMenu(){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    document.getElementById('menu').classList.add('active');
-  }
-  function openProduct(id){ openSection(id); }
-  function toggleDots(){
-    const m=document.getElementById('dotsMenu');
-    m.style.display=m.style.display==='block'?'none':'block';
-  }
-  function comprar(producto){
-    const mensaje = `Hola ✨\nQuiero comprar la vela humectante ${producto} de Lumea.\nPrecio: $10`;
-    window.open('https://wa.me/593962017059?text='+encodeURIComponent(mensaje),'_blank');
-  }
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 600);
+  }, 1000);
+});
+
+function openSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('menu').classList.remove('active');
+  document.getElementById(id).classList.add('active');
+}
+
+function goMenu(){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('menu').classList.add('active');
+}
+
+function comprar(producto){
+  const mensaje = `Hola ✨ Quiero comprar la vela ${producto} de Lumea.`;
+  window.open('https://wa.me/593986284936?text=' + encodeURIComponent(mensaje), '_blank');
+}
 </script>
 
-</body>
+</body>  
 </html>
